@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JOB FREAK ASSIGNMENT</title>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    #left-panel {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    #content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .active {
+      color:violet;
+    }
+
+    .content-section {
+      display: none;
+      text-align: center;
+      margin-top: 25%;
+      font-size: 25px;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="left-panel">
+    <ul>
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#information" class="nav-link">Information</a></li>
+      <li><a href="#guide" class="nav-link">Guide</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <div id="home" class="content-section active">
+      <h2>Welcome to the Home Page</h2>
+      <p>This is the home page content.</p>
+    </div>
+
+    <div id="contact" class="content-section">
+      <h2>Contact</h2>
+      <p>This is the contact page.</p>
+    </div>
+
+    <div id="information" class="content-section">
+      <h2>Information</h2>
+      <p>This is the information page.</p>
+    </div>
+
+    <div id="guide" class="content-section">
+      <h2>Guide</h2>
+      <p>This is the guide page.</p>
+    </div>
+  </div>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contentSections = document.querySelectorAll('.content-section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetSectionId = link.getAttribute('href').substring(1);
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+        });
+        link.classList.add('active');
+
+        contentSections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === targetSectionId) {
+            section.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
